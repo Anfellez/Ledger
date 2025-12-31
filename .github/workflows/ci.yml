@@ -14,13 +14,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '6.0.x'
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v2
 
     - name: Restore dependencies
-      run: dotnet restore code/ledger.sln
+      run: nuget restore code/ledger.sln
 
     - name: Build
       run: dotnet build code/ledger.sln --configuration Release --no-restore
