@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <PropertyGroup>
+ <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+ <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+ <ProjectGuid>{A1B2C3D4-E5F6-4789-ABCD-1234567890AB}</ProjectGuid>
+ <OutputType>Exe</OutputType>
+ <RootNamespace>ledger.TestsRunner</RootNamespace>
+ <AssemblyName>ledger.TestsRunner</AssemblyName>
+ <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+ <FileAlignment>512</FileAlignment>
+ <Deterministic>true</Deterministic>
+ </PropertyGroup>
+ <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+ <PlatformTarget>AnyCPU</PlatformTarget>
+ <DebugSymbols>true</DebugSymbols>
+ <DebugType>full</DebugType>
+ <Optimize>false</Optimize>
+ <OutputPath>bin\Debug\</OutputPath>
+ <DefineConstants>DEBUG;TRACE</DefineConstants>
+ </PropertyGroup>
+ <ItemGroup>
+ <Compile Include="Program.cs" />
+ </ItemGroup>
+ <ItemGroup>
+ <ProjectReference Include="..\ledger\ledger.csproj">
+ <Project>{D54EE107-AA2F-4E53-A54D-3B5EA26FFDE4}</Project>
+ <Name>ledger</Name>
+ </ProjectReference>
+ </ItemGroup>
+ <ItemGroup>
+ <Reference Include="System" />
+ <Reference Include="System.Core" />
+ <Reference Include="System.Xml.Linq" />
+ <Reference Include="System.Data" />
+ </ItemGroup>
+ <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,73 @@
+cppcheck: error: could not find or open any of the paths given.
+{
+  "1": {
+    "CWE": "CWE-119",
+    "name": "UnsafeStringFunction",
+    "File": "scan_to_json.sh",
+    "Line": "14",
+    "At": "PATTERNS=(\"strcpy\" \"strcat\" \"sprintf\" \"gets\" \"\\\\bfopen\\\\b\" \"\\\\bmalloc\\\\b\" \"\\\\brealloc\\\\b\" \"\\\\bfree\\\\b\" \"\\\\bscanf\\\\b\")"
+  },
+  "2": {
+    "CWE": "CWE-119",
+    "name": "UnsafeStringFunction",
+    "File": "scan_to_json.sh",
+    "Line": "46",
+    "At": "if \"strcpy\" in ctx or \"strcat\" in ctx:"
+  },
+  "3": {
+    "CWE": "CWE-120",
+    "name": "UnsafeFormatFunction",
+    "File": "scan_to_json.sh",
+    "Line": "49",
+    "At": "elif \"sprintf\" in ctx:"
+  },
+  "4": {
+    "CWE": "CWE-242",
+    "name": "UnsafeInputFunction_gets",
+    "File": "scan_to_json.sh",
+    "Line": "52",
+    "At": "elif \"gets\" in ctx:"
+  },
+  "5": {
+    "CWE": "CWE-242",
+    "name": "UnsafeInputFunction_gets",
+    "File": "scan_to_json.sh",
+    "Line": "54",
+    "At": "name = \"UnsafeInputFunction_gets\""
+  },
+  "6": {
+    "CWE": "CWE-242",
+    "name": "UnsafeInputFunction_gets",
+    "File": "ledger.csproj",
+    "Line": "87",
+    "At": "<Import Project=\"$(MSBuildToolsPath)\\Microsoft.CSharp.targets\" />"
+  },
+  "7": {
+    "CWE": "CWE-252",
+    "name": "UncheckedReturn_fopen",
+    "File": "scan_to_json.sh",
+    "Line": "55",
+    "At": "elif \"fopen\" in ctx:"
+  },
+  "8": {
+    "CWE": "CWE-690",
+    "name": "UncheckedMallocReturn",
+    "File": "scan_to_json.sh",
+    "Line": "58",
+    "At": "elif \"malloc\" in ctx:"
+  },
+  "9": {
+    "CWE": "CWE-401",
+    "name": "MemoryLeakOnRealloc",
+    "File": "scan_to_json.sh",
+    "Line": "61",
+    "At": "elif \"realloc\" in ctx:"
+  },
+  "10": {
+    "CWE": "CWE-416",
+    "name": "UseAfterFreeSuspect",
+    "File": "scan_to_json.sh",
+    "Line": "64",
+    "At": "elif \"free\" in ctx:"
+  }
+}

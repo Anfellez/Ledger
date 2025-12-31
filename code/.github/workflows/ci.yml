@@ -1,0 +1,55 @@
+name: .NET Framework CI
+
+on:
+ push:
+ branches: [ master ]
+ pull_request:
+ branches: [ master ]
+
+jobs:
+ build-and-test:
+ runs-on: windows-latest
+
+ steps:
+ - name: Checkout repository
+ uses: actions/checkout@v4
+
+ - name: Restore NuGet packages
+ shell: powershell
+ run: |
+ Write-Host "Downloading nuget.exe..."
+ Invoke-WebRequest -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile nuget.exe
+ Write-Host "Restoring packages for solution"
+ .\nuget.exe restore ledger.sln
+
+ - name: Build solution
+ run: msbuild ledger.sln /p:Configuration=Debug
+
+ - name: Locate vstest.console.exe
+ id: find-vstest
+ shell: powershell
+ run: |
+ $vsPath = &"$Env:ProgramFiles(x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property installationPath
+ if (-not $vsPath) { Write-Error 'Visual Studio installation not found (vswhere failed).'; exit1 }
+ $candidates = @(
+ Join-Path $vsPath 'Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe',
+ Join-Path $vsPath 'Common7\IDE\CommonExtensions\Microsoft\TestPlatform\vstest.console.exe'
+ )
+ foreach ($p in $candidates) { if (Test-Path $p) { Write-Host "Found vstest at: $p"; echo "vstest=$p" >> $env:GITHUB_OUTPUT; exit0 } }
+ Write-Error 'vstest.console.exe not found'; exit1
+
+ - name: Run tests with vstest
+ shell: powershell
+ run: |
+ $vstest = '${{ steps.find-vstest.outputs.vstest }}'
+ Write-Host "Using vstest: $vstest"
+ # ensure output directory exists
+ if (-not (Test-Path TestResults)) { New-Item -ItemType Directory -Path TestResults | Out-Null }
+ & $vstest "ledger.Tests\bin\Debug\ledger.Tests.dll" /logger:trx /ResultsDirectory:"TestResults"
+ if ($LASTEXITCODE -ne0) { Write-Error "vstest failed with exit code $LASTEXITCODE"; exit $LASTEXITCODE }
+
+ - name: Upload test results
+ uses: actions/upload-artifact@v4
+ with:
+ name: test-results
+ path: TestResults/*.trx

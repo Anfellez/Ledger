@@ -1,0 +1,58 @@
+{
+ "1": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/Form1.cs",
+ "Line": "8",
+ "At": "using System.Text;"
+ },
+ "2": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/Form1.cs",
+ "Line": "9",
+ "At": "using System.Threading.Tasks;"
+ },
+ "3": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs",
+ "Line": "3",
+ "At": "using System.Reflection;"
+ },
+ "4": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs",
+ "Line": "2",
+ "At": "using System;"
+ },
+ "5": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/Program.cs",
+ "Line": "2",
+ "At": "using System.Collections.Generic;"
+ },
+ "6": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/Program.cs",
+ "Line": "3",
+ "At": "using System.Linq;"
+ },
+ "7": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/Program.cs",
+ "Line": "4",
+ "At": "using System.Threading.Tasks;"
+ },
+ "8": {
+ "CWE": "CWE-398",
+ "name": "UnusedUsingDirective",
+ "File": "ledger/Properties/AssemblyInfo.cs",
+ "Line": "2",
+ "At": "using System.Runtime.CompilerServices;"
+ }
+}

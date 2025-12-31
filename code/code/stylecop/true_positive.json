@@ -1,0 +1,34 @@
+{
+ "1": {
+ "CWE": "CWE-532",
+ "name": "ExposureOfSensitiveInformation",
+ "File": "ledger\\Form1.cs",
+ "Line": "220",
+ "At": "MessageBox.Show(this, $\"±£¥Ê ß∞‹£∫{ex.Message}\", \"¥ÌŒÛ\", MessageBoxButtons.OK, MessageBoxIcon.Error);",
+ "Note": "Exception messages may leak sensitive info; ensure safe logging and user-friendly messages."
+ },
+ "2": {
+ "CWE": "CWE-398",
+ "name": "CodeQuality_AvoidEmptyCatch",
+ "File": "ledger\\Form1.cs",
+ "Line": "96",
+ "At": "catch\n {\n // silently ignore styling errors on unexpected environments\n }",
+ "Note": "Empty catch hides unexpected errors and makes debugging hard."
+ },
+ "3": {
+ "CWE": "CWE-754",
+ "name": "ImproperHandlingOfExceptionalConditions",
+ "File": "ledger\\Form1.cs",
+ "Line": "172",
+ "At": "if (dlg.ShowDialog(this) == DialogResult.OK)\n{\n try\n {\n var serializer = new XmlSerializer(typeof(List<Transaction>));\n using (var fs = File.Create(dlg.FileName))\n {\n serializer.Serialize(fs, _allTransactions);\n }\n MessageBox.Show(this, \"±£¥Ê≥…π¶°£\", \"–≈œ¢\", MessageBoxButtons.OK, MessageBoxIcon.Information);\n }\n catch (Exception ex)\n {\n MessageBox.Show(this, $\"±£¥Ê ß∞‹£∫{ex.Message}\", \"¥ÌŒÛ\", MessageBoxButtons.OK, MessageBoxIcon.Error);\n }\n }",
+ "Note": "Catching System.Exception is broad; prefer specific exceptions and better error handling."
+ },
+ "4": {
+ "CWE": "CWE-532",
+ "name": "ExposureOfSensitiveInformation",
+ "File": "ledger\\Form1.cs",
+ "Line": "200",
+ "At": "MessageBox.Show(this, $\"º”‘ÿ ß∞‹£∫{ex.Message}\", \"¥ÌŒÛ\", MessageBoxButtons.OK, MessageBoxIcon.Error);",
+ "Note": "Same issue on load."
+ }
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+ <OutputType>Exe</OutputType>
+ <TargetFramework>net6.0</TargetFramework>
+ <LangVersion>latest</LangVersion>
+ <Nullable>enable</Nullable>
+ </PropertyGroup>
+ <ItemGroup>
+ <PackageReference Include="Microsoft.Build.Locator" Version="1.4.1" />
+ <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0" />
+ <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
+ <!-- static analysis packs -->
+ <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.0" />
+ <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="3.3.2" />
+ <PackageReference Include="SonarAnalyzer.CSharp" Version="8.13.1.21947" />
+ </ItemGroup>
+</Project>

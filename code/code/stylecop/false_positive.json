@@ -1,0 +1,48 @@
+{
+ "1": {
+ "CWE": "N/A",
+ "name": "SA1600_MissingDocumentation_PublicClass",
+ "File": "ledger\\Form1.cs",
+ "Line": "12",
+ "At": "public partial class Form1 : Form"
+ },
+ "2": {
+ "CWE": "N/A",
+ "name": "SA1600_MissingDocumentation_PublicMethod",
+ "File": "ledger\\Program.cs",
+ "Line": "13",
+ "At": "static void Main()"
+ },
+ "3": {
+ "CWE": "N/A",
+ "name": "SA1309_FieldNamesShouldNotBeginWithUnderscore",
+ "File": "ledger\\Form1.cs",
+ "Line": "14",
+ "At": "private BindingList<Transaction> _bindingList = new BindingList<Transaction>();",
+ "Note": "Project uses leading underscore private-field convention; rule is stylistic and considered a false positive in this codebase."
+ },
+ "4": {
+ "CWE": "N/A",
+ "name": "SA1200_UsingDirectivesPlacement",
+ "File": "ledger\\Form1.cs",
+ "Line": "1",
+ "At": "using System;\nusing System.Collections.Generic;\n...",
+ "Note": "WinForms file mixes designer and handwritten code; strict ordering rules from analyzers are noisy here."
+ },
+ "5": {
+ "CWE": "N/A",
+ "name": "SA1101_ThisPrefixNotRequired",
+ "File": "ledger\\Form1.cs",
+ "Line": "120",
+ "At": "toolTip.SetToolTip(btnAdd, \"新增一条交易记录\");",
+ "Note": "Rule that enforces explicit 'this.' prefix is a stylistic choice; analyzer flag is not helpful for this codebase."
+ },
+ "6": {
+ "CWE": "N/A",
+ "name": "SA1516_MissingBlankLineBetweenElements",
+ "File": "ledger\\Transaction.cs",
+ "Line": "6",
+ "At": "[Serializable]\npublic class Transaction",
+ "Note": "Additional blank-line recommendations are minor and can be treated as false positives for this small project."
+ }
+}

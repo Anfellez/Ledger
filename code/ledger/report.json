@@ -1,0 +1,51 @@
+{
+  "1": {
+    "CWE": "CWE-401",
+    "name": "MemoryLeak_UnreleasedHGlobal",
+    "File": "Vulnerabilities.cs",
+    "Line": "14",
+    "At": "IntPtr ptr = Marshal.AllocHGlobal(1024);"
+  },
+  "2": {
+    "CWE": "CWE-415",
+    "name": "DoubleFree_FreeHGlobal",
+    "File": "Vulnerabilities.cs",
+    "Line": "35",
+    "At": "Marshal.FreeHGlobal(ptr);"
+  },
+  "3": {
+    "CWE": "CWE-476",
+    "name": "NullPointerDereference",
+    "File": "Vulnerabilities.cs",
+    "Line": "51",
+    "At": "return maybeNull.Length;"
+  },
+  "4": {
+    "CWE": "CWE-772",
+    "name": "MissingReleaseOfResource",
+    "File": "Vulnerabilities.cs",
+    "Line": "58",
+    "At": "var fs = System.IO.File.OpenRead(\"nonexistent.txt\");"
+  },
+  "5": {
+    "CWE": "CWE-200",
+    "name": "InformationExposure_ConsolePointer",
+    "File": "Vulnerabilities.cs",
+    "Line": "17",
+    "At": "Console.WriteLine(\"Allocated native memory at: \" + ptr);"
+  },
+  "6": {
+    "CWE": "CWE-502",
+    "name": "DeserializationOfUntrustedData",
+    "File": "Form1.cs",
+    "Line": "304",
+    "At": "loaded = (List<Transaction>)serializer.Deserialize(fs);"
+  },
+  "7": {
+    "CWE": "CWE-20",
+    "name": "NumericUpDownValueOutOfRange_CauseCrash",
+    "File": "TransactionForm.cs",
+    "Line": "22",
+    "At": "numericUpDownAmount.Value = Transaction.Amount;"
+  }
+}

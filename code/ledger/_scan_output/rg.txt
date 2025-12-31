@@ -1,0 +1,95 @@
+scan_to_json.sh-12-
+scan_to_json.sh-13-# 2) 快速模式搜索不安全 API（上下文 2 行）
+scan_to_json.sh:14:PATTERNS=("strcpy" "strcat" "sprintf" "gets" "\\bfopen\\b" "\\bmalloc\\b" "\\brealloc\\b" "\\bfree\\b" "\\bscanf\\b")
+scan_to_json.sh-15-> "$OUT_DIR/rg.txt"
+scan_to_json.sh-16-for p in "${PATTERNS[@]}"; do
+--
+scan_to_json.sh-44-        name = "SuspiciousAPI"
+scan_to_json.sh-45-        # map specific API -> tentative CWE
+scan_to_json.sh:46:        if "strcpy" in ctx or "strcat" in ctx:
+scan_to_json.sh-47-            cwe = "CWE-119"
+scan_to_json.sh-48-            name = "UnsafeStringFunction"
+scan_to_json.sh-12-
+scan_to_json.sh-13-# 2) 快速模式搜索不安全 API（上下文 2 行）
+scan_to_json.sh:14:PATTERNS=("strcpy" "strcat" "sprintf" "gets" "\\bfopen\\b" "\\bmalloc\\b" "\\brealloc\\b" "\\bfree\\b" "\\bscanf\\b")
+scan_to_json.sh-15-> "$OUT_DIR/rg.txt"
+scan_to_json.sh-16-for p in "${PATTERNS[@]}"; do
+--
+scan_to_json.sh-44-        name = "SuspiciousAPI"
+scan_to_json.sh-45-        # map specific API -> tentative CWE
+scan_to_json.sh:46:        if "strcpy" in ctx or "strcat" in ctx:
+scan_to_json.sh-47-            cwe = "CWE-119"
+scan_to_json.sh-48-            name = "UnsafeStringFunction"
+scan_to_json.sh-12-
+scan_to_json.sh-13-# 2) 快速模式搜索不安全 API（上下文 2 行）
+scan_to_json.sh:14:PATTERNS=("strcpy" "strcat" "sprintf" "gets" "\\bfopen\\b" "\\bmalloc\\b" "\\brealloc\\b" "\\bfree\\b" "\\bscanf\\b")
+scan_to_json.sh-15-> "$OUT_DIR/rg.txt"
+scan_to_json.sh-16-for p in "${PATTERNS[@]}"; do
+--
+scan_to_json.sh-47-            cwe = "CWE-119"
+scan_to_json.sh-48-            name = "UnsafeStringFunction"
+scan_to_json.sh:49:        elif "sprintf" in ctx:
+scan_to_json.sh-50-            cwe = "CWE-120"
+scan_to_json.sh-51-            name = "UnsafeFormatFunction"
+scan_to_json.sh-12-
+scan_to_json.sh-13-# 2) 快速模式搜索不安全 API（上下文 2 行）
+scan_to_json.sh:14:PATTERNS=("strcpy" "strcat" "sprintf" "gets" "\\bfopen\\b" "\\bmalloc\\b" "\\brealloc\\b" "\\bfree\\b" "\\bscanf\\b")
+scan_to_json.sh-15-> "$OUT_DIR/rg.txt"
+scan_to_json.sh-16-for p in "${PATTERNS[@]}"; do
+--
+scan_to_json.sh-50-            cwe = "CWE-120"
+scan_to_json.sh-51-            name = "UnsafeFormatFunction"
+scan_to_json.sh:52:        elif "gets" in ctx:
+scan_to_json.sh-53-            cwe = "CWE-242"
+scan_to_json.sh:54:            name = "UnsafeInputFunction_gets"
+scan_to_json.sh-55-        elif "fopen" in ctx:
+scan_to_json.sh-56-            cwe = "CWE-252"
+--
+ledger.csproj-85-    <None Include="App.config" />
+ledger.csproj-86-  </ItemGroup>
+ledger.csproj:87:  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+ledger.csproj-88-</Project>
+scan_to_json.sh-53-            cwe = "CWE-242"
+scan_to_json.sh-54-            name = "UnsafeInputFunction_gets"
+scan_to_json.sh:55:        elif "fopen" in ctx:
+scan_to_json.sh-56-            cwe = "CWE-252"
+scan_to_json.sh-57-            name = "UncheckedReturn_fopen"
+scan_to_json.sh-56-            cwe = "CWE-252"
+scan_to_json.sh-57-            name = "UncheckedReturn_fopen"
+scan_to_json.sh:58:        elif "malloc" in ctx:
+scan_to_json.sh-59-            cwe = "CWE-690"
+scan_to_json.sh-60-            name = "UncheckedMallocReturn"
+scan_to_json.sh-59-            cwe = "CWE-690"
+scan_to_json.sh-60-            name = "UncheckedMallocReturn"
+scan_to_json.sh:61:        elif "realloc" in ctx:
+scan_to_json.sh-62-            cwe = "CWE-401"
+scan_to_json.sh-63-            name = "MemoryLeakOnRealloc"
+scan_to_json.sh-62-            cwe = "CWE-401"
+scan_to_json.sh-63-            name = "MemoryLeakOnRealloc"
+scan_to_json.sh:64:        elif "free" in ctx:
+scan_to_json.sh-65-            cwe = "CWE-416"
+scan_to_json.sh-66-            name = "UseAfterFreeSuspect"
+--
+Vulnerabilities.cs-8- public static class Vulnerabilities
+Vulnerabilities.cs-9- {
+Vulnerabilities.cs:10: //1) Memory leak: allocate unmanaged memory and do not free it.
+Vulnerabilities.cs-11- // True issue: native memory will not be released until process exit.
+Vulnerabilities.cs-12- public static void LeakNativeMemory()
+--
+Vulnerabilities.cs-18- }
+Vulnerabilities.cs-19-
+Vulnerabilities.cs:20: //2) Double free (double FreeHGlobal) - can corrupt heap at runtime
+Vulnerabilities.cs-21- // True issue: calling FreeHGlobal twice on the same pointer is undefined.
+Vulnerabilities.cs-22- public static void DoubleFree()
+--
+Vulnerabilities.cs-30- {
+Vulnerabilities.cs-31- Marshal.FreeHGlobal(ptr);
+Vulnerabilities.cs:32: // erroneous double free
+Vulnerabilities.cs-33- try
+Vulnerabilities.cs-34- {
+--
+Vulnerabilities.cs-38- {
+Vulnerabilities.cs-39- // swallow so program continues during tests
+Vulnerabilities.cs:40: Console.WriteLine("Second free failed: " + ex.Message);
+Vulnerabilities.cs-41- }
+Vulnerabilities.cs-42- }
