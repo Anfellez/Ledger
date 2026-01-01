@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -14,25 +15,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # 设置 NuGet
     - name: Setup NuGet
       uses: nuget/setup-nuget@v2
 
-    # 关键点：在 code 目录下 restore
-    - name: Restore NuGet packages
-      working-directory: code
-      run: nuget restore ledger.sln
+    - name: Restore dependencies
+      run: nuget restore code/ledger.sln
 
-    # 使用 VS 自带 MSBuild（而不是 dotnet build）
-    - name: Build solution
-      working-directory: code
-      run: |
-        msbuild ledger.sln ^
-          /p:Configuration=Release ^
-          /p:RestorePackages=false
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1
 
-    # 运行测试（适用于 .NET Framework）
+    - name: Build
+      run: msbuild code/ledger.sln /p:Configuration=Release
+
     - name: Run tests
-      working-directory: code
-      run: |
-        vstest.console.exe ledger.Tests\bin\Release\ledger.Tests.dll
+      run: dotnet test code/ledger.Tests/ledger.Tests.csproj --configuration Release --no-build --verbosity normal
